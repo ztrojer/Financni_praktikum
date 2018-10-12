@@ -90,7 +90,13 @@ l2014 <- primerjava_graf[c(7:18),]
 l2015 <- primerjava_graf[c(19:30),]
 
 #3.c: linearna regresija
-graf3 <- plot(primerjava_graf, type = "n",xlab= "Napoved", ylab = "Opazovano", ylim=c(0,0.5), xlim=c(0,0.5), main="6m Euribor 2013-2015")
+graf3 <- plot(primerjava_graf, 
+              type = "n",
+              xlab= "Napoved",
+              ylab = "Opazovano",
+              ylim=c(0,0.5),
+              xlim=c(0,0.5), 
+              main="6m Euribor 2013-2015")
 points(x=l2013[,2], y = l2013[,1], type = "p", col="red",pch = 16)
 points(x=l2014[,2], y = l2014[,1], type = "p", col="blue",pch = 16)
 points(x=l2015[,2], y = l2015[,1], type = "p", col="green",pch = 16)
@@ -100,21 +106,39 @@ legend("topleft",bty = "n", c("2013","2014","2015"), pch=16, col =c("red","blue"
 
 #3.d: leto 2013
 
-graf4 <- plot(l2013, type = "n",xlab= "Napoved", ylab = "Opazovano", ylim=c(0.2,0.4), xlim=c(0.2,0.4), main="6m Euribor 2013")
+graf4 <- plot(l2013,
+              type = "n",
+              xlab= "Napoved",
+              ylab = "Opazovano", 
+              ylim=c(0.2,0.4),
+              xlim=c(0.2,0.4),
+              main="6m Euribor 2013")
 points(x=l2013[,2], y = l2013[,1], type = "p", col="red",pch = 16)
 abline(a=0,b=1,lty=2)
 abline(lm(l2013[,1]~l2013[,2]), lwd = 2, col ="black")
 legend("topleft",bty = "n",c("2011"), pch = 16, col =c("red"))
 
 #3.d: leto 2014
-graf5 <- plot(l2014, type = "n",xlab= "Napoved", ylab = "Opazovano", ylim=c(0,0.5), xlim=c(0,0.5), main="6m Euribor 2014")
+graf5 <- plot(l2014,
+              type = "n",
+              xlab= "Napoved",
+              ylab = "Opazovano",
+              ylim=c(0,0.5), 
+              xlim=c(0,0.5),
+              main="6m Euribor 2014")
 points(x=l2014[,2], y = l2014[,1], type = "p", col="blue",pch = 16)
 abline(a=0,b=1,lty=2)
 abline(lm(l2014[,1]~l2014[,2]), lwd = 2, col ="black")
 legend("topleft",bty = "n",c("2014"), pch = 16, col =c("blue"))
 
 #3.d: leto 2015
-graf6 <- plot(l2015, type = "n",xlab= "Napoved", ylab = "Opazovano", ylim=c(0,0.3), xlim=c(0,0.3), main="6m Euribor 2015")
+graf6 <- plot(l2015,
+              type = "n",
+              xlab= "Napoved",
+              ylab = "Opazovano",
+              ylim=c(0,0.3),
+              xlim=c(0,0.3),
+              main="6m Euribor 2015")
 points(x=l2015[,2], y = l2015[,1], type = "p", col="green",pch = 16)
 abline(a=0,b=1,lty=2)
 abline(lm(l2015[,1]~l2015[,2]), lwd = 2, col ="black")
