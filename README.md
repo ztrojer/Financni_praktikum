@@ -1,1 +1,1 @@
-"# Financni_praktikum" 
+Namenjen predmetu Finančni praktikum
