@@ -1,11 +1,4 @@
-library(rvest)
-library(gsubfn)
-library(readr)
-library(dplyr)
-require(readr)
-require(dplyr)
-require(graphics)
-
+#Prva naloga
 leto13 <- read_csv("podatki/euribor2013.csv", locale=locale(encoding="cp1250"))
 leto13 <- leto13[c(1,2,24,44,64,85,107,127,150,172,193,216,237)]
 leto13 <- leto13[-c(3,7,8,10,11,13,14),]
