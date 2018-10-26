@@ -1,0 +1,30 @@
+library(actuar)
+
+#prva naloga
+#1.a: uvozimo txt in narisemo histogram
+vzorec <- scan("vzorec3.txt")
+histogram <- hist(vzorec)
+
+#1.b vzamem eksponentno porazdelitev
+funkc = mde(vzorec, dexp, start  = list(rate = 1/200), measure = "CvM")
+rate = funkc$estimate
+
+#1.c risanje
+hist(vzorec, probability = TRUE)
+curve(dexp(x, rate), add = TRUE)
+
+#1.d 
+upanje_y <- 1/rate
+upanje_s <- upanje_y * 20 * 1/2
+var_y = 1/rate^2
+var_s = var_y*20*1/2 + 2/rate^2 * 20 * 1/4
+
+#2.a, 2.b
+h = 0.25
+n = 100
+diskretno <- discretize(pexp(x, rate), 0, h*n, step = h)
+plot(diffinv(diskretno))
+plot(stepfun(seq(0, (n-1)*h, by = h), diffinv(diskretno)))
+curve(pexp(x, rate), add = TRUE, col = 'red')
+
+#2.c
