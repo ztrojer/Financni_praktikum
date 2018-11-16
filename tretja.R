@@ -25,7 +25,7 @@ izplacilo <- function(vrsta, W, type) {
   } 
   if (type == "call") {
     izplacilo = max(vrsta[length(vrsta)] - K/l, 0)
-
+    
   } else {
     izplacilo = max(K/l - vrsta[length(vrsta)], 0)
   }
@@ -91,4 +91,75 @@ for (i in c(1:100)){
 }
 min <- floor(min(c(N1,N2,N3))) 
 max <- ceiling(max(c(N1,N2,N3))) 
+
+cena_binomske <- binomski(60,1.05, 0.95,0.01, 15, rep(1,16), "put")
+
+#histogram N1
+pov.N1 <- mean(N1)
+odklon.N1 <- sqrt(var(N1))
+x1_odklon_desno <- cena_binomske + odklon.N1
+x1_odklon_levo <- cena_binomske - odklon.N1
+
+histogram1 <-hist(N1,breaks = 7,
+                  main = "Monte Carlo: N=10",
+                  xlab = "Premija",
+                  xlim = c(min, max),
+                  col ="yellow")
+abline(v= pov.N1, col = "green")
+abline (v = cena_binomske, col = "red", lty = "dashed")
+arrows(x0 = cena_binomske, y0 = 0, x1= x1_odklon_desno, col= "green", length = 0.1 )
+arrows(x0 = cena_binomske, y0 = 0, x1= x1_odklon_levo, col= "green", length = 0.1 )
+
+legend('topright', 
+       legend = c('Monte Carlo', 'Analiza modela'),
+       col = c('green', 'red'),
+       cex=0.8,
+       lty=c("solid","dashed"))
+
+#histogram N2
+pov.N2 <- mean(N2)
+odklon.N2 <- sqrt(var(N2))
+x2_odklon_desno <- cena_binomske + odklon.N2
+x2_odklon_levo <- cena_binomske - odklon.N2
+
+
+histogram2 <-hist(N2,breaks = 7,
+                  main = "Monte Carlo: N=100",
+                  xlab = "Premija",
+                  xlim = c(min, max),
+                  col ="yellow")
+abline(v= pov.N2, col = "green")
+abline (v = cena_binomske, col = "red", lty = "dashed")
+arrows(x0 = cena_binomske, y0 = 0, x1= x2_odklon_desno, col= "green", length = 0.1 )
+arrows(x0 = cena_binomske, y0 = 0, x1= x2_odklon_levo, col= "green", length = 0.1 )
+
+
+legend('topright', 
+       legend = c('Monte Carlo', 'Analiza modela'),
+       col = c('green', 'red'),
+       cex=0.8,
+       lty=c("solid","dashed"))
+
+#histogram N3
+pov.N3 <- mean(N3)
+odklon.N3 <- sqrt(var(N3))
+x3_odklon_desno <- cena_binomske + odklon.N3
+x3_odklon_levo <- cena_binomske - odklon.N3
+
+
+histogram3 <-hist(N3,breaks = 7,
+                  main = "Monte Carlo: N=1000",
+                  xlab = "Premija",
+                  xlim = c(min, max),
+                  col ="yellow")
+abline(v= pov.N3, col = "green")
+abline (v = cena_binomske, col = "red", lty = "dashed")
+arrows(x0 = cena_binomske, y0 = 0, x1= x3_odklon_desno, col= "green", length = 0.1 )
+arrows(x0 = cena_binomske, y0 = 0, x1= x3_odklon_levo, col= "green", length = 0.1 )
+legend('topright', 
+       legend = c('Monte Carlo', 'Analiza modela'),
+       col = c('green', 'red'),
+       cex=0.8,
+       lty=c("solid","dashed"))
+
 
